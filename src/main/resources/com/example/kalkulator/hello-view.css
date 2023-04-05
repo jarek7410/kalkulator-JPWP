@@ -1,0 +1,21 @@
+.button{
+    -fx-background-color: #22a6b3;
+}
+.button:pressed,.button:focused{
+    -fx-background-color: #7ed6df;
+    /*-fx-border-color: #badc58;*/
+}
+.btn-number {
+    -fx-background-color: #c7ecee;
+}
+.btn-number:pressed, .btn-number:focused{
+    -fx-background-color: #dff9fb;
+    /*-fx-border-color: #badc58;*/
+}
+#outputText{
+    -fx-background-color: #4834d4;
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+    -fx-alignment: center-right;
+}
+

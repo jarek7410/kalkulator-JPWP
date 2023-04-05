@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.Group?>
+
+
+<VBox stylesheets="@hello-view.css" alignment="CENTER" prefHeight="2000.0" prefWidth="60.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kalkulator.HelloController">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label fx:id="outputText" text="demo" minWidth="260" />
+    <GridPane>
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <children>
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="sin" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="cos" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="tan" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+            <fx:define>
+                <ToggleGroup fx:id="Q" />
+            </fx:define>
+            <RadioButton mnemonicParsing="false" toggleGroup="$Q" text="Deg" GridPane.columnIndex="3" />
+            <RadioButton mnemonicParsing="false" toggleGroup="$Q" text="Rad" GridPane.columnIndex="4"/>
+            <Button onAction="#onHelloButtonClick"  minWidth="50" text="sin-1" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="cos-1" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="tan-1" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="pi" GridPane.rowIndex="1" GridPane.columnIndex="3" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="e" GridPane.rowIndex="1" GridPane.columnIndex="4" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="x^y" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="x^2" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="x^3" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="e^x" GridPane.rowIndex="2" GridPane.columnIndex="3" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="10^x" GridPane.rowIndex="2" GridPane.columnIndex="4" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="sqrt(x)" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="x^1/3" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="x^1/y" GridPane.rowIndex="3" GridPane.columnIndex="2" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="ln" GridPane.rowIndex="3" GridPane.columnIndex="3" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="log" GridPane.rowIndex="3" GridPane.columnIndex="4" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="(" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text=")" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="1/x" GridPane.rowIndex="4" GridPane.columnIndex="2" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="\%" GridPane.rowIndex="4" GridPane.columnIndex="3" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="x!" GridPane.rowIndex="4" GridPane.columnIndex="4" />
+        </children>
+    </GridPane>
+    <GridPane>
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <children>
+            <Button fx:id="num7" onAction="#onHelloButtonClick" minWidth="50" text="7" styleClass="btn-number" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            <Button fx:id="num8" onAction="#onHelloButtonClick" minWidth="50" text="8" styleClass="btn-number" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+            <Button fx:id="num9" onAction="#onHelloButtonClick" minWidth="50" text="9" styleClass="btn-number" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+            <Button fx:id="add"  onAction="#onHelloButtonClick" minWidth="50" text="+" GridPane.rowIndex="0" GridPane.columnIndex="3" />
+            <Button fx:id="back" onAction="#onHelloButtonClick" minWidth="50" text="back" GridPane.rowIndex="0" GridPane.columnIndex="4" />
+            <Button fx:id="num4" onAction="#onHelloButtonClick" minWidth="50" text="4" styleClass="btn-number" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+            <Button fx:id="num5" onAction="#onHelloButtonClick" minWidth="50" text="5" styleClass="btn-number" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+            <Button fx:id="num6" onAction="#onHelloButtonClick" minWidth="50" text="6" styleClass="btn-number" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+            <Button fx:id="subt" onAction="#onHelloButtonClick" minWidth="50" text="-" GridPane.rowIndex="1" GridPane.columnIndex="3" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="Ans" GridPane.rowIndex="1" GridPane.columnIndex="4" />
+            <Button fx:id="num1" onAction="#onHelloButtonClick" minWidth="50" text="1" styleClass="btn-number" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+            <Button fx:id="num2" onAction="#onHelloButtonClick" minWidth="50" text="2" styleClass="btn-number" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+            <Button fx:id="num3" onAction="#onHelloButtonClick" minWidth="50" text="3" styleClass="btn-number" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+            <Button fx:id="mult" onAction="#onHelloButtonClick" minWidth="50" text="*" GridPane.rowIndex="2" GridPane.columnIndex="3" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="M+" GridPane.rowIndex="2" GridPane.columnIndex="4" />
+            <Button fx:id="num0" onAction="#onHelloButtonClick" minWidth="50" text="0" styleClass="btn-number" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="." styleClass="btn-number" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="EXP" GridPane.rowIndex="3" GridPane.columnIndex="2" />
+            <Button fx:id="dev"  onAction="#onHelloButtonClick" minWidth="50" text="/" GridPane.rowIndex="3" GridPane.columnIndex="3" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="M-" GridPane.rowIndex="3" GridPane.columnIndex="4" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="+-" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="RND" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="AC" styleClass="btn-number" GridPane.rowIndex="4" GridPane.columnIndex="2" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="=" styleClass="btn-number" GridPane.rowIndex="4" GridPane.columnIndex="3" />
+            <Button onAction="#onHelloButtonClick" minWidth="50" text="MR" GridPane.rowIndex="4" GridPane.columnIndex="4" />
+        </children>
+    </GridPane>
+</VBox>
