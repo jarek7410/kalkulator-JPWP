@@ -4,16 +4,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.Group?>
-
-
 <VBox stylesheets="@hello-view.css" alignment="CENTER" prefHeight="2000.0" prefWidth="60.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kalkulator.HelloController">
 
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <Label fx:id="outputTextOld" text="demo" minWidth="260" />
+    <Label fx:id="outputTextOld" text="M" minWidth="260" />
     <Label fx:id="outputText" text="demo" minWidth="260" />
     <GridPane>
         <columnConstraints>
@@ -96,7 +93,7 @@
             <Button fx:id="Mplus" onAction="#onHelloButtonClick" minWidth="50" text="M+" GridPane.rowIndex="2" GridPane.columnIndex="4" />
             <Button fx:id="num0" onAction="#onHelloButtonClick" minWidth="50" text="0" styleClass="btn-number" GridPane.rowIndex="3" GridPane.columnIndex="0" />
             <Button fx:id="dot"  onAction="#onHelloButtonClick" minWidth="50" text="." styleClass="btn-number" GridPane.rowIndex="3" GridPane.columnIndex="1" />
-            <Button fx:id="EXP"  onAction="#onHelloButtonClick" minWidth="50" text="EXP" GridPane.rowIndex="3" GridPane.columnIndex="2" />
+<!--            <Button fx:id="EXP"  onAction="#onHelloButtonClick" minWidth="50" text="EXP" GridPane.rowIndex="3" GridPane.columnIndex="2" />-->
             <Button fx:id="dev"  onAction="#onHelloButtonClick" minWidth="50" text="/" GridPane.rowIndex="3" GridPane.columnIndex="3" />
             <Button fx:id="Msub" onAction="#onHelloButtonClick" minWidth="50" text="M-" GridPane.rowIndex="3" GridPane.columnIndex="4" />
             <Button fx:id="plsu" onAction="#onHelloButtonClick" minWidth="50" text="+-" GridPane.rowIndex="4" GridPane.columnIndex="0" />

@@ -12,15 +12,11 @@ public class HelloController {
 
     @FXML
     public Label outputTextOld;
-    private String SteteOfOutput;
-    private double output=0;
-    private int placesLimit=10;
-    private int places=0;
+    private int placesLimit=13;
     private String bufferCurrent="0";
     private String bufferOld ="0";
     private Operations lastOperation= Operations.none;
-    private boolean isDotPressed =false;
-    private int decimalPlacec=0;
+    private int decimalPlacec=4;
     @FXML
     private Label outputText;
 //    private ToggleGroup Q;
@@ -28,15 +24,10 @@ public class HelloController {
     @FXML
     protected void onHelloButtonClick(ActionEvent event) {
         Button button= (Button) event.getSource();
-        outputText.setText(button.getId());
+        //outputText.setText(button.getId());
         String s=button.getId();
         if(s.contains("num")){
             imputNumber(s);
-        }
-        if(s.contains("dot")
-            &&!bufferCurrent.contains(".")){
-
-            bufferCurrent+=".";
         }
         if(s.equals("add")){
             doLastOperation(Operations.add);
@@ -50,52 +41,84 @@ public class HelloController {
         if(s.equals("mult")){
             doLastOperation(Operations.multiply);
         }
+
+        //for oneargument operations use doOperation
         if(s.equals("plsu")){
-            //bufferCurrent *=-1;
+            doOperation(Operations.plusMinus);
         }
         if(s.equals("sin1")){
-
+            doOperation(Operations.sec);
         }
-        outputTextOld.setText(String.valueOf(bufferOld));
-        outputText.setText(String.valueOf(bufferCurrent));
+        if(s.equals("sin")){
+            doOperation(Operations.sin);
+        }
+        if(s.equals("pi")){
+            doOperation(Operations.pi);
+        }
+        if(s.equals("e")){
+            doOperation(Operations.e);
+        }
+
+        //special operations
+        if(s.contains("dot")
+                &&!bufferCurrent.contains(".")){
+            addDot();
+        }
+        if(s.equals("ac")){
+            bufferCurrent="0";
+            bufferOld="0";
+            refreshOutput();
+        }
+//        outputTextOld.setText(String.valueOf(bufferOld));
+//        outputText.setText(String.valueOf(bufferCurrent));
 
     }
+
+    private void addDot() {
+        if(bufferCurrent.equals("0")){
+            bufferCurrent="0.";
+        }else{
+            bufferCurrent+=".";
+        }
+        refreshOutput();
+        outputText.setText(bufferCurrent);
+    }
+
     private void imputNumber(String number){
         if(!(bufferCurrent.length()<placesLimit)){
             return;
         }
         int i = Integer.parseInt(String.valueOf(number.charAt(3)));
-        if(!isDotPressed){
-
+        if(bufferCurrent.equals("0")){
+            bufferCurrent="";
         }
         bufferCurrent += i;
+        refreshOutput();
+        outputText.setText(bufferCurrent);
+    }
+    private void doOperation(Operations operation){
+        var numberSecend = Double.valueOf(bufferCurrent);
+        double output=0;
 
+        output=operation.calculate(0,numberSecend);
+        bufferCurrent ="0";
+
+        bufferOld =Double.toString(output);;
+        refreshOutput();
+        outputText.setText(bufferOld);
     }
     private void doLastOperation(Operations newOperation){
         var numberFirst = Double.valueOf(bufferOld);
         var numberSecend = Double.valueOf(bufferCurrent);
         double output=0;
-        switch (lastOperation){
-            case add -> {
-                output=numberFirst+numberSecend;
-            }
-            case subtract -> {
-                output=numberFirst-numberSecend;
-            }
-            case none -> {
-                output=numberSecend;
-            }
-            case multiply -> {
-                output=numberFirst*numberSecend;
-            }
-            case divide -> {
-                output=numberFirst/numberSecend;
-            }
-        }
+
+        output=lastOperation.calculate(numberFirst,numberSecend);
+
         lastOperation=newOperation;
         bufferCurrent ="0";
         bufferOld=Double.toString(output);
         refreshOutput();
+        outputText.setText(bufferOld);
     }
 
     private void refreshOutput() {
@@ -105,7 +128,7 @@ public class HelloController {
         if(bufferCurrent.length()>placesLimit){
             bufferCurrent=bufferCurrent.substring(0,placesLimit);
         }
-        outputText.setText(bufferCurrent);
-        outputTextOld.setText(bufferOld);
+//        outputText.setText(bufferCurrent);
+//        outputTextOld.setText(bufferOld);
     }
 }
