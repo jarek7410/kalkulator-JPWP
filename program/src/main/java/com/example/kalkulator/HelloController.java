@@ -79,6 +79,9 @@ public class HelloController {
             case multiply -> {
                 bufOld*=bufCurrent;
             }
+            case divide -> {
+                bufOld/=bufCurrent;
+            }
         }
         lastOperation=newOperation;
         bufCurrent=0;

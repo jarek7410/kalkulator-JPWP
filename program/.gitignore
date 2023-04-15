@@ -1,13 +1,13 @@
-target/
-!.mvn/wrapper/maven-wrapper.jar
+../target/
+!program/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+program/.idea/modules.xml
+program/.idea/jarRepositories.xml
+program/.idea/compiler.xml
+program/.idea/libraries/
 *.iws
 *.iml
 *.ipr
