@@ -94,7 +94,7 @@
             <Button fx:id="num0" onAction="#onHelloButtonClick" minWidth="50" text="0" styleClass="btn-number" GridPane.rowIndex="3" GridPane.columnIndex="0" />
             <Button fx:id="dot"  onAction="#onHelloButtonClick" minWidth="50" text="." styleClass="btn-number" GridPane.rowIndex="3" GridPane.columnIndex="1" />
 <!--            <Button fx:id="EXP"  onAction="#onHelloButtonClick" minWidth="50" text="EXP" GridPane.rowIndex="3" GridPane.columnIndex="2" />-->
-            <Button fx:id="dev"  onAction="#onHelloButtonClick" minWidth="50" text="/" GridPane.rowIndex="3" GridPane.columnIndex="3" />
+            <Button fx:id="div"  onAction="#onHelloButtonClick" minWidth="50" text="/" GridPane.rowIndex="3" GridPane.columnIndex="3" />
             <Button fx:id="Msub" onAction="#onHelloButtonClick" minWidth="50" text="M-" GridPane.rowIndex="3" GridPane.columnIndex="4" />
             <Button fx:id="plsu" onAction="#onHelloButtonClick" minWidth="50" text="+-" GridPane.rowIndex="4" GridPane.columnIndex="0" />
             <Button fx:id="rnd"  onAction="#onHelloButtonClick" minWidth="50" text="RND" GridPane.rowIndex="4" GridPane.columnIndex="1" />

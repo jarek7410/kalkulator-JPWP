@@ -122,15 +122,19 @@ public enum Operations {
     pi{
         @Override
         public double calculate(double a, double b) {
-            return Math.PI;
+            return (b==0?
+                    Math.PI:
+                    Math.PI*b);
         }
     },
     e{
         @Override
         public double calculate(double a, double b) {
-            return Math.E;
+            return (b==0?
+                    Math.E:
+                    Math.E*b);
         }
-    },;
+    };
     public abstract double calculate(double a, double b);
 
 

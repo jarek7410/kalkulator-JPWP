@@ -4,8 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class HelloController {
+    static Logger logger =  LogManager.getLogger("kalkulator/MainControler");
 
     private int n;
     private int r;
@@ -36,18 +39,32 @@ public class HelloController {
             doLastOperation(Operations.subtract);
         }
         if(s.contains("eql")){
-            doLastOperation(Operations.none);
+            String buffer;
+            if(bufferCurrent.equals("0")) {
+                bufferCurrent=bufferOld;
+                buffer = bufferOld;
+            }
+            else {
+                buffer = bufferCurrent;
+            }
+            doLastOperation(lastOperation);
+            bufferCurrent=buffer;
+            logger.warn("eql: "+lastOperation.name()+", input("+bufferOld+", "+bufferCurrent+"), buffer("+buffer+")");
         }
         if(s.equals("mult")){
             doLastOperation(Operations.multiply);
         }
+        if(s.equals("div")){
+            doLastOperation(Operations.divide);
+        }
 
         //for oneargument operations use doOperation
-        if(s.equals("plsu")){
-            doOperation(Operations.plusMinus);
-        }
+
         if(s.equals("sin1")){
             doOperation(Operations.sec);
+        }
+        if(s.equals("plsu")){
+            doOperation(Operations.plusMinus);
         }
         if(s.equals("sin")){
             doOperation(Operations.sin);
@@ -67,7 +84,7 @@ public class HelloController {
         if(s.equals("ac")){
             bufferCurrent="0";
             bufferOld="0";
-            refreshOutput();
+            doLastOperation(Operations.none);
         }
 //        outputTextOld.setText(String.valueOf(bufferOld));
 //        outputText.setText(String.valueOf(bufferCurrent));
@@ -97,10 +114,12 @@ public class HelloController {
         outputText.setText(bufferCurrent);
     }
     private void doOperation(Operations operation){
-        var numberSecend = Double.valueOf(bufferCurrent);
+        double numberSecend = Double.valueOf(bufferCurrent);
         double output=0;
+        doLastOperation(Operations.none);
 
         output=operation.calculate(0,numberSecend);
+        logger.debug("doOperation: "+operation.name()+" output("+output+ ")"+", input("+numberSecend+")");
         bufferCurrent ="0";
 
         bufferOld =Double.toString(output);;
@@ -113,7 +132,7 @@ public class HelloController {
         double output=0;
 
         output=lastOperation.calculate(numberFirst,numberSecend);
-
+        logger.debug("doLastOperation: "+lastOperation.name() +" output("+output+ ")"+", input("+numberFirst+", "+numberSecend+") newOperation: "+newOperation.name());
         lastOperation=newOperation;
         bufferCurrent ="0";
         bufferOld=Double.toString(output);
@@ -128,6 +147,7 @@ public class HelloController {
         if(bufferCurrent.length()>placesLimit){
             bufferCurrent=bufferCurrent.substring(0,placesLimit);
         }
+        logger.trace("refresh: bufferOld("+bufferOld+ "), bufferCurrent("+bufferCurrent+")");
 //        outputText.setText(bufferCurrent);
 //        outputTextOld.setText(bufferOld);
     }
