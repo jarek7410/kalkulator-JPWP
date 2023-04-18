@@ -4,17 +4,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class HelloController {
     static Logger logger =  LogManager.getLogger("kalkulator/MainControler");
 
-    private int n;
-    private int r;
 
     @FXML
     public Label outputTextOld;
+    public RadioButton deg;
     private int placesLimit=13;
     private String bufferCurrent="0";
     private String bufferOld ="0";
@@ -22,6 +22,7 @@ public class HelloController {
     private int decimalPlacec=4;
     @FXML
     private Label outputText;
+    private boolean isNewOperation;
 //    private ToggleGroup Q;
 
     @FXML
@@ -57,25 +58,81 @@ public class HelloController {
         if(s.equals("div")){
             doLastOperation(Operations.divide);
         }
+        if(s.equals("yrtx")){
+            doLastOperation(Operations.yrtx);
+        }
+        if(s.equals("x2y")){
+            doLastOperation(Operations.pow);
+        }
+        if(s.equals("back")){
+            if(bufferCurrent.length()>1){
+                bufferCurrent=bufferCurrent.substring(0,bufferCurrent.length()-1);
+            }else{
+                bufferCurrent="0";
+            }
+            refreshOutput();
+            outputText.setText(bufferCurrent);
+        }
 
         //for oneargument operations use doOperation
 
-        if(s.equals("sin1")){
-            doOperation(Operations.sec);
-        }
         if(s.equals("plsu")){
-            doOperation(Operations.plusMinus);
+            doOperation(Metastrophe.plusMinus);
         }
-        if(s.equals("sin")){
-            doOperation(Operations.sin);
+        if(s.contains("Trig")) {
+            if(deg.isSelected()){
+                bufferCurrent=String.valueOf(Math.toRadians(Double.parseDouble(bufferCurrent)));
+            }
+            switch (s.substring(4)) {
+                case "sin1" -> doOperation(Metastrophe.sec);
+                case "sin" -> doOperation(Metastrophe.sin);
+                case "cos1" -> doOperation(Metastrophe.cst);
+                case "cos" -> doOperation(Metastrophe.cos);
+                case "tan1" -> doOperation(Metastrophe.cot);
+                case "tan" -> doOperation(Metastrophe.tan);
+            }
+            isNewOperation=true;
         }
         if(s.equals("pi")){
-            doOperation(Operations.pi);
+            doOperation(Metastrophe.pi);
         }
-        if(s.equals("e")){
-            doOperation(Operations.e);
+        if(s.equals("log")){
+            doOperation(Metastrophe.log);
+        }
+        if(s.equals("ln")){
+            doOperation(Metastrophe.ln);
+        }
+        if(s.equals("sqrt")){
+            doOperation(Metastrophe.sqrt);
+        }
+        if(s.equals("cbrt")){
+            doOperation(Metastrophe.cbrt);
+        }
+        if(s.equals("ptc")){
+            doOperation(Metastrophe.percent);
+        }
+        if(s.equals("x22")){
+            doOperation(Metastrophe.x22);
+        }
+        if(s.equals("x23")){
+            doOperation(Metastrophe.x23);
+        }
+        if(s.equals("e2x")){
+            doOperation(Metastrophe.e2x);
+        }
+        if(s.equals("102x")){
+            doOperation(Metastrophe.t2x);
         }
 
+        if(s.equals("e")){
+            doOperation(Metastrophe.e);
+        }
+        if(s.equals("1ovx")){
+            doOperation(Metastrophe.inverse);
+        }
+        if(s.equals("fact")){
+            doOperation(Metastrophe.factorial);
+        }
         //special operations
         if(s.contains("dot")
                 &&!bufferCurrent.contains(".")){
@@ -84,7 +141,8 @@ public class HelloController {
         if(s.equals("ac")){
             bufferCurrent="0";
             bufferOld="0";
-            doLastOperation(Operations.none);
+            lastOperation=Operations.none;
+            refreshOutput();
         }
 //        outputTextOld.setText(String.valueOf(bufferOld));
 //        outputText.setText(String.valueOf(bufferCurrent));
@@ -98,46 +156,42 @@ public class HelloController {
             bufferCurrent+=".";
         }
         refreshOutput();
-        outputText.setText(bufferCurrent);
     }
 
     private void imputNumber(String number){
+        if(bufferCurrent.equals("0")||isNewOperation){
+            bufferCurrent="";
+            isNewOperation=false;
+        }
         if(!(bufferCurrent.length()<placesLimit)){
             return;
         }
         int i = Integer.parseInt(String.valueOf(number.charAt(3)));
-        if(bufferCurrent.equals("0")){
-            bufferCurrent="";
-        }
         bufferCurrent += i;
         refreshOutput();
-        outputText.setText(bufferCurrent);
     }
-    private void doOperation(Operations operation){
+    private void doOperation(Metastrophe operation){
         double numberSecend = Double.valueOf(bufferCurrent);
-        double output=0;
-        doLastOperation(Operations.none);
-
-        output=operation.calculate(0,numberSecend);
+        double output=operation.translate(numberSecend);
         logger.debug("doOperation: "+operation.name()+" output("+output+ ")"+", input("+numberSecend+")");
-        bufferCurrent ="0";
 
-        bufferOld =Double.toString(output);;
+        bufferCurrent =Double.toString(output);
         refreshOutput();
-        outputText.setText(bufferOld);
     }
     private void doLastOperation(Operations newOperation){
         var numberFirst = Double.valueOf(bufferOld);
         var numberSecend = Double.valueOf(bufferCurrent);
-        double output=0;
+    //do old operation
+        double output=lastOperation.calculate(numberFirst,numberSecend);
 
-        output=lastOperation.calculate(numberFirst,numberSecend);
         logger.debug("doLastOperation: "+lastOperation.name() +" output("+output+ ")"+", input("+numberFirst+", "+numberSecend+") newOperation: "+newOperation.name());
-        lastOperation=newOperation;
-        bufferCurrent ="0";
+    //print old operation
+        bufferCurrent =Double.toString(output);
         bufferOld=Double.toString(output);
         refreshOutput();
-        outputText.setText(bufferOld);
+    //seve new operation
+        lastOperation=newOperation;
+        isNewOperation=true;
     }
 
     private void refreshOutput() {
@@ -148,7 +202,7 @@ public class HelloController {
             bufferCurrent=bufferCurrent.substring(0,placesLimit);
         }
         logger.trace("refresh: bufferOld("+bufferOld+ "), bufferCurrent("+bufferCurrent+")");
-//        outputText.setText(bufferCurrent);
-//        outputTextOld.setText(bufferOld);
+        outputText.setText(bufferCurrent);
+        outputTextOld.setText(bufferOld);
     }
 }

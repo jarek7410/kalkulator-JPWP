@@ -29,26 +29,26 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
         <children>
-            <Button fx:id="sin" onAction="#onHelloButtonClick" minWidth="50" text="sin" GridPane.rowIndex="0" GridPane.columnIndex="0" />
-            <Button fx:id="cos" onAction="#onHelloButtonClick" minWidth="50" text="cos" GridPane.rowIndex="0" GridPane.columnIndex="1" />
-            <Button fx:id="tan" onAction="#onHelloButtonClick" minWidth="50" text="tan" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+            <Button fx:id="Trigsin" onAction="#onHelloButtonClick" minWidth="50" text="sin" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            <Button fx:id="Trigcos" onAction="#onHelloButtonClick" minWidth="50" text="cos" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+            <Button fx:id="Trigtan" onAction="#onHelloButtonClick" minWidth="50" text="tan" GridPane.rowIndex="0" GridPane.columnIndex="2" />
             <fx:define>
                 <ToggleGroup fx:id="Q" />
             </fx:define>
-            <RadioButton mnemonicParsing="false" toggleGroup="$Q" text="Deg" GridPane.columnIndex="3" />
+            <RadioButton mnemonicParsing="false" toggleGroup="$Q" fx:id="deg" text="Deg" GridPane.columnIndex="3" />
             <RadioButton mnemonicParsing="false" selected="true" toggleGroup="$Q" text="Rad" GridPane.columnIndex="4"/>
-            <Button fx:id="sin1" onAction="#onHelloButtonClick"  minWidth="50" text="sin-1" GridPane.rowIndex="1" GridPane.columnIndex="0" />
-            <Button fx:id="cos1" onAction="#onHelloButtonClick" minWidth="50" text="cos-1" GridPane.rowIndex="1" GridPane.columnIndex="1" />
-            <Button fx:id="tan1" onAction="#onHelloButtonClick" minWidth="50" text="tan-1" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+            <Button fx:id="Trigsin1" onAction="#onHelloButtonClick"  minWidth="50" text="sin-1" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+            <Button fx:id="Trigcos1" onAction="#onHelloButtonClick" minWidth="50" text="cos-1" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+            <Button fx:id="Trigtan1" onAction="#onHelloButtonClick" minWidth="50" text="tan-1" GridPane.rowIndex="1" GridPane.columnIndex="2" />
             <Button fx:id="pi"   onAction="#onHelloButtonClick" minWidth="50" text="pi" GridPane.rowIndex="1" GridPane.columnIndex="3" />
             <Button fx:id="e"    onAction="#onHelloButtonClick" minWidth="50" text="e" GridPane.rowIndex="1" GridPane.columnIndex="4" />
-            <Button fx:id="xtoy" onAction="#onHelloButtonClick" minWidth="50" text="x^y" GridPane.rowIndex="2" GridPane.columnIndex="0" />
-            <Button fx:id="xto2" onAction="#onHelloButtonClick" minWidth="50" text="x^2" GridPane.rowIndex="2" GridPane.columnIndex="1" />
-            <Button fx:id="xto3" onAction="#onHelloButtonClick" minWidth="50" text="x^3" GridPane.rowIndex="2" GridPane.columnIndex="2" />
-            <Button fx:id="etox" onAction="#onHelloButtonClick" minWidth="50" text="e^x" GridPane.rowIndex="2" GridPane.columnIndex="3" />
-            <Button fx:id="10tx" onAction="#onHelloButtonClick" minWidth="50" text="10^x" GridPane.rowIndex="2" GridPane.columnIndex="4" />
+            <Button fx:id="x2y" onAction="#onHelloButtonClick" minWidth="50" text="x^y" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+            <Button fx:id="x22" onAction="#onHelloButtonClick" minWidth="50" text="x^2" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+            <Button fx:id="x23" onAction="#onHelloButtonClick" minWidth="50" text="x^3" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+            <Button fx:id="e2x" onAction="#onHelloButtonClick" minWidth="50" text="e^x" GridPane.rowIndex="2" GridPane.columnIndex="3" />
+            <Button fx:id="102x" onAction="#onHelloButtonClick" minWidth="50" text="10^x" GridPane.rowIndex="2" GridPane.columnIndex="4" />
             <Button fx:id="sqrt" onAction="#onHelloButtonClick" minWidth="50" text="sqrt(x)" GridPane.rowIndex="3" GridPane.columnIndex="0" />
-            <Button fx:id="curt" onAction="#onHelloButtonClick" minWidth="50" text="x^1/3" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+            <Button fx:id="cbrt" onAction="#onHelloButtonClick" minWidth="50" text="x^1/3" GridPane.rowIndex="3" GridPane.columnIndex="1" />
             <Button fx:id="yrtx" onAction="#onHelloButtonClick" minWidth="50" text="x^1/y" GridPane.rowIndex="3" GridPane.columnIndex="2" />
             <Button fx:id="ln"   onAction="#onHelloButtonClick" minWidth="50" text="ln" GridPane.rowIndex="3" GridPane.columnIndex="3" />
             <Button fx:id="log"  onAction="#onHelloButtonClick" minWidth="50" text="log" GridPane.rowIndex="3" GridPane.columnIndex="4" />
@@ -97,7 +97,7 @@
             <Button fx:id="div"  onAction="#onHelloButtonClick" minWidth="50" text="/" GridPane.rowIndex="3" GridPane.columnIndex="3" />
             <Button fx:id="Msub" onAction="#onHelloButtonClick" minWidth="50" text="M-" GridPane.rowIndex="3" GridPane.columnIndex="4" />
             <Button fx:id="plsu" onAction="#onHelloButtonClick" minWidth="50" text="+-" GridPane.rowIndex="4" GridPane.columnIndex="0" />
-            <Button fx:id="rnd"  onAction="#onHelloButtonClick" minWidth="50" text="RND" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+<!--            <Button fx:id="rnd"  onAction="#onHelloButtonClick" minWidth="50" text="RND" GridPane.rowIndex="4" GridPane.columnIndex="1" />-->
             <Button fx:id="ac"   onAction="#onHelloButtonClick" minWidth="50" text="AC" styleClass="btn-number" GridPane.rowIndex="4" GridPane.columnIndex="2" />
             <Button fx:id="eql"  onAction="#onHelloButtonClick" minWidth="50" text="=" styleClass="btn-number" GridPane.rowIndex="4" GridPane.columnIndex="3" />
             <Button fx:id="mr"   onAction="#onHelloButtonClick" minWidth="50" text="MR" GridPane.rowIndex="4" GridPane.columnIndex="4" />
