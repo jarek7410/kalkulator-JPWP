@@ -1,1 +1,8 @@
-\program\target
+program/target/*
+program/target/classes/com/example/kalkulator/hello-view.css
+
+*.class
+
+program/var/log/logger.log
+
+program/target/classes/com/example/kalkulator/hello-view.fxml
