@@ -19,7 +19,6 @@ public class HelloController {
     private String bufferCurrent="0";
     private String bufferOld ="0";
     private Operations lastOperation= Operations.none;
-    private int decimalPlacec=4;
     @FXML
     private Label outputText;
     //TODO: function checking if it is true
@@ -29,29 +28,13 @@ public class HelloController {
     @FXML
     protected void foo(ActionEvent event) {
         Button button= (Button) event.getSource();
-        //outputText.setText(button.getId());
         String s=button.getId();
-        if(s.contains("num")){
-            imputNumber(s);
-        }
+
         if(s.equals("add")){
             doLastOperation(Operations.add);
         }
         if(s.equals("sub")){
             doLastOperation(Operations.subtract);
-        }
-        if(s.contains("eql")){
-            String buffer;
-            if(bufferCurrent.equals("0")) {
-                bufferCurrent=bufferOld;
-                buffer = bufferOld;
-            }
-            else {
-                buffer = bufferCurrent;
-            }
-            doLastOperation(lastOperation);
-            bufferCurrent=buffer;
-            logger.warn("eql: "+lastOperation.name()+", input("+bufferOld+", "+bufferCurrent+"), buffer("+buffer+")");
         }
         if(s.equals("mult")){
             doLastOperation(Operations.multiply);
@@ -65,35 +48,13 @@ public class HelloController {
         if(s.equals("x2y")){
             doLastOperation(Operations.pow);
         }
-        if(s.equals("back")){
-            if(bufferCurrent.length()>1){
-                bufferCurrent=bufferCurrent.substring(0,bufferCurrent.length()-1);
-            }else{
-                bufferCurrent="0";
-            }
-            refreshOutput();
-            outputText.setText(bufferCurrent);
-        }
 
         //for oneargument operations use doOperation
 
         if(s.equals("plsu")){
             doOperation(Metastrophe.plusMinus);
         }
-        if(s.contains("Trig")) {
-            if(deg.isSelected()){
-                bufferCurrent=String.valueOf(Math.toRadians(Double.parseDouble(bufferCurrent)));
-            }
-            switch (s.substring(4)) {
-                case "sin1" -> doOperation(Metastrophe.sec);
-                case "sin" -> doOperation(Metastrophe.sin);
-                case "cos1" -> doOperation(Metastrophe.cst);
-                case "cos" -> doOperation(Metastrophe.cos);
-                case "tan1" -> doOperation(Metastrophe.cot);
-                case "tan" -> doOperation(Metastrophe.tan);
-            }
-            isNewOperation=true;
-        }
+
         if(s.equals("pi")){
             doOperation(Metastrophe.pi);
         }
@@ -134,6 +95,7 @@ public class HelloController {
         if(s.equals("fact")){
             doOperation(Metastrophe.factorial);
         }
+
         //special operations
         if(s.contains("num")){
             imputNumber(s);
@@ -163,7 +125,6 @@ public class HelloController {
             }
             isNewOperation=true;
         }
-
         if(s.contains("dot")
                 &&!bufferCurrent.contains(".")){
             addDot();
@@ -174,8 +135,19 @@ public class HelloController {
             lastOperation=Operations.none;
             refreshOutput();
         }
-//        outputTextOld.setText(String.valueOf(bufferOld));
-//        outputText.setText(String.valueOf(bufferCurrent));
+        if(s.contains("eql")){
+            String buffer;
+            if(bufferCurrent.equals("0")) {
+                bufferCurrent=bufferOld;
+                buffer = bufferOld;
+            }
+            else {
+                buffer = bufferCurrent;
+            }
+            doLastOperation(lastOperation);
+            bufferCurrent=buffer;
+            logger.warn("eql: "+lastOperation.name()+", input("+bufferOld+", "+bufferCurrent+"), buffer("+buffer+")");
+        }
 
     }
 
