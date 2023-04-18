@@ -17,5 +17,13 @@
     -fx-text-fill: white;
     -fx-font-size: 20;
     -fx-alignment: center-right;
+    -fx-padding: 5 5 5 5;
 }
+#outputTextOld{
+     -fx-background-color: #4834d4;
+     -fx-text-fill: white;
+     -fx-font-size: 15;
+     -fx-alignment: center-right;
+     -fx-padding: 5 5 5 5;
+ }
 
