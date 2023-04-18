@@ -129,7 +129,6 @@ public enum Metastrophe {
         public double translate(double a) {
             return Math.pow(10,a);
         }
-    },
-    ;
+    };
     public abstract double translate(double a);
 }
