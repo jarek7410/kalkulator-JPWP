@@ -21,11 +21,12 @@ public class HelloController {
     private Operations lastOperation= Operations.none;
     @FXML
     private Label outputText;
+    //TODO: function checking if it is true
     private boolean isNewOperation;
 //    private ToggleGroup Q;
 
     @FXML
-    protected void onHelloButtonClick(ActionEvent event) {
+    protected void foo(ActionEvent event) {
         Button button= (Button) event.getSource();
         String s=button.getId();
 
@@ -108,6 +109,8 @@ public class HelloController {
             refreshOutput();
             outputText.setText(bufferCurrent);
         }
+
+        //TODO: make warse
         if(s.contains("Trig")) {
             if(deg.isSelected()){
                 bufferCurrent=String.valueOf(Math.toRadians(Double.parseDouble(bufferCurrent)));
@@ -169,6 +172,7 @@ public class HelloController {
         bufferCurrent += i;
         refreshOutput();
     }
+
     private void doOperation(Metastrophe operation){
         double numberSecend = Double.valueOf(bufferCurrent);
         double output=operation.translate(numberSecend);
@@ -177,12 +181,12 @@ public class HelloController {
         bufferCurrent =Double.toString(output);
         refreshOutput();
     }
+
     private void doLastOperation(Operations newOperation){
         var numberFirst = Double.valueOf(bufferOld);
         var numberSecend = Double.valueOf(bufferCurrent);
     //do old operation
         double output=lastOperation.calculate(numberFirst,numberSecend);
-
         logger.debug("doLastOperation: "+lastOperation.name() +" output("+output+ ")"+", input("+numberFirst+", "+numberSecend+") newOperation: "+newOperation.name());
     //print old operation
         bufferCurrent =Double.toString(output);
