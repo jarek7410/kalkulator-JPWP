@@ -10,8 +10,6 @@ import org.apache.logging.log4j.Logger;
 
 public class HelloController {
     static Logger logger =  LogManager.getLogger("kalkulator/MainControler");
-
-
     @FXML
     public Label outputTextOld;
     public RadioButton deg;
@@ -23,10 +21,9 @@ public class HelloController {
     private Label outputText;
     //TODO: function checking if it is true
     private boolean isNewOperation;
-//    private ToggleGroup Q;
 
     @FXML
-    protected void foo(ActionEvent event) {
+    protected void onHelloButtonClick(ActionEvent event) {
         Button button= (Button) event.getSource();
         String s=button.getId();
 
@@ -50,7 +47,6 @@ public class HelloController {
         }
 
         //for oneargument operations use doOperation
-
         if(s.equals("plsu")){
             doOperation(Metastrophe.plusMinus);
         }
