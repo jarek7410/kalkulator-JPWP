@@ -253,6 +253,12 @@ public class HelloController {
     }
 
     private void refreshOutput() {
+        //first check if bufferCurrent is longer than placesLimit
+        //if it is, cut it to placesLimit
+        //then check if bufferOld is longer than placesLimit
+        //if it is, cut it to placesLimit
+        //then set outputText and outputTextOld
+        //then log it
         if(bufferOld.length()>placesLimit){
             bufferOld=bufferOld.substring(0,placesLimit);
         }
