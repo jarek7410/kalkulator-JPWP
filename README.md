@@ -24,3 +24,5 @@ Język programowania jest dowolny, jednak preforowany jest python/java.
 - Pierwsza osoba pisze przez kilka minut.
 - Druga osoba przygladą się tworzeniu, zgłasza poprawki i zadaje pytania.
 - Następuje zamiana ról.
+
+Funkcja jako argument powinna przyjmować jedynie tekst.
