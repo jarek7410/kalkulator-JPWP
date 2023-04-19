@@ -1,5 +1,5 @@
-# zadanie 1
-## popraw powniszy kod by byl bardziej czytelny i możliwie najlepiej pasował do wiadomosci zawrtych na prezentacji
+# Zadanie 1
+## Popraw poniższy kod by był bardziej czytelny i możliwie najlepiej pasował do wiadomości zawrtych w prezentacji.
     
     @FXML
     protected void foo(ActionEvent event) {
