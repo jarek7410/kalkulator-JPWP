@@ -9,7 +9,6 @@ W folderze **zadania** znajdują się zaproponowane przez nas ćwiczenia które 
 ## Zadania
 
 ### Zadanie 1 (10 + 10 min)
-[Funkcja]
 Zadanie polega na analizie kodu oraz poprawie znalezionych błędów.
 Proszę zaznajomić się z zawartością [pliku](zadania/zadanie_1.md), a następnie wykonać
 punkty do zrobienia:
