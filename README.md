@@ -15,6 +15,10 @@ punkty do zrobienia:
 1. Znalezienie wszystkich linii nie spełniających konceptów czystego kodu. 
 2. Poprawienie kodu w najdłuższym ciągu *brudnego* kodu.
 
+context do zadania
+[link](https://github.com/jarek7410/kalkulator-JPWP/tree/zadanie/program/src/main/java/com/example/kalkulator)
+[clasa](https://github.com/jarek7410/kalkulator-JPWP/blob/zadanie/program/src/main/java/com/example/kalkulator/HelloController.java)
+
 ### Zadanie 2 (21min) 
 [Link](zadania/zadanie_2.md)
 Pracując w parach napiszcie metodę,
